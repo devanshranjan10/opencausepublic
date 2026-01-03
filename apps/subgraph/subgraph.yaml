@@ -1,0 +1,59 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: CampaignNativeVault
+    network: mainnet
+    source:
+      address: "{{CAMPAIGN_VAULT_FACTORY_ADDRESS}}"
+      abi: CampaignVaultFactory
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DonationReceived
+        - WithdrawalExecuted
+        - VaultCreated
+      abis:
+        - name: CampaignNativeVault
+          file: ./abis/CampaignNativeVault.json
+        - name: CampaignTokenVault
+          file: ./abis/CampaignTokenVault.json
+        - name: CampaignVaultFactory
+          file: ./abis/CampaignVaultFactory.json
+      eventHandlers:
+        - event: DonationReceived(indexed bytes32,indexed bytes32,indexed address,uint256,uint256)
+          handler: handleDonationReceived
+        - event: WithdrawalExecuted(indexed bytes32,address,uint256,indexed bytes32,uint256)
+          handler: handleWithdrawalExecuted
+      file: ./src/mapping.ts
+templates:
+  - kind: ethereum
+    name: CampaignNativeVaultTemplate
+    network: mainnet
+    source:
+      address: "{{CAMPAIGN_VAULT_FACTORY_ADDRESS}}"
+      abi: CampaignVaultFactory
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DonationReceived
+        - WithdrawalExecuted
+      abis:
+        - name: CampaignNativeVault
+          file: ./abis/CampaignNativeVault.json
+        - name: CampaignTokenVault
+          file: ./abis/CampaignTokenVault.json
+        - name: CampaignVaultFactory
+          file: ./abis/CampaignVaultFactory.json
+      eventHandlers:
+        - event: DonationReceived(indexed bytes32,indexed bytes32,indexed address,uint256,uint256)
+          handler: handleDonationReceived
+        - event: WithdrawalExecuted(indexed bytes32,address,uint256,indexed bytes32,uint256)
+          handler: handleWithdrawalExecuted
+      file: ./src/mapping.ts

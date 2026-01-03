@@ -1,0 +1,24 @@
+{
+  "name": "@opencause/firebase",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "cd ../.. && $(pnpm bin -w)/tsc --project packages/firebase/tsconfig.json",
+    "dev": "cd ../.. && $(pnpm bin -w)/tsc --project packages/firebase/tsconfig.json --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.0"
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+type DonationReceived @entity {
+  id: ID!
+  campaignId: Bytes!
+  intentId: Bytes!
+  donor: Bytes!
+  amount: BigInt!
+  token: Bytes # null for native token
+  timestamp: BigInt!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  vault: Vault!
+}
+
+type WithdrawalExecuted @entity {
+  id: ID!
+  campaignId: Bytes!
+  withdrawalId: Bytes!
+  to: Bytes!
+  amount: BigInt!
+  token: Bytes # null for native token
+  timestamp: BigInt!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  vault: Vault!
+}
+
+type Vault @entity {
+  id: ID! # vault address
+  campaignId: Bytes!
+  assetId: Bytes! # token address or zero address for native
+  type: String! # "NATIVE" or "TOKEN"
+  totalDonated: BigInt!
+  donations: [DonationReceived!]! @derivedFrom(field: "vault")
+  withdrawals: [WithdrawalExecuted!]! @derivedFrom(field: "vault")
+  createdAt: BigInt!
+  createdAtBlock: BigInt!
+}
+
+
+
+
+
+

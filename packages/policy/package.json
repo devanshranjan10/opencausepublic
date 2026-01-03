@@ -1,0 +1,19 @@
+{
+  "name": "@opencause/policy",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "cd ../.. && $(pnpm bin -w)/tsc --project packages/policy/tsconfig.json",
+    "dev": "cd ../.. && $(pnpm bin -w)/tsc --project packages/policy/tsconfig.json --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@opencause/types": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
+
+

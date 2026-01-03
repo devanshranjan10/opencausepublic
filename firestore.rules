@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ============================================
+    // PUBLIC COLLECTIONS (readable without auth)
+    // ============================================
+    
+    // Public campaign info (no PII)
+    match /campaigns_public/{campaignId} {
+      allow read: if true; // Anyone can read
+      allow write: if false; // Only backend (Admin SDK) can write
+    }
+    
+    // Public campaign stats
+    match /campaign_stats_public/{campaignId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Public donations (anonymous-safe)
+    match /donations_public/{campaignId}/items/{donationId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Public payment intents
+    match /payment_intents_public/{intentId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // ============================================
+    // PRIVATE COLLECTIONS (admin/server only)
+    // ============================================
+    
+    match /donations_private/{donationId} {
+      allow read, write: if false; // Only server (Admin SDK)
+    }
+    
+    match /payment_intents_private/{intentId} {
+      allow read, write: if false;
+    }
+    
+    match /chain_txs_private/{docId} {
+      allow read, write: if false;
+    }
+    
+    // ============================================
+    // EXISTING COLLECTIONS (legacy, migrate gradually)
+    // ============================================
+    
+    // Keep existing collections restricted until migration complete
+    match /campaigns/{campaignId} {
+      allow read: if request.auth != null; // Require auth for now
+      allow write: if false;
+    }
+    
+    match /donations/{donationId} {
+      allow read, write: if false;
+    }
+    
+    match /payment_intents/{intentId} {
+      allow read: if request.auth != null; // Temporary: allow auth'd reads during migration
+      allow write: if false;
+    }
+    
+    match /campaign_deposits/{depositId} {
+      allow read, write: if false;
+    }
+    
+    match /crypto_networks/{networkId} {
+      allow read: if true; // Public registry
+      allow write: if false;
+    }
+    
+    match /crypto_assets/{assetId} {
+      allow read: if true; // Public registry
+      allow write: if false;
+    }
+    
+    match /campaign_stats/{campaignId} {
+      allow read, write: if false; // Migrate to campaign_stats_public
+    }
+  }
+}
+
+
+
+
+
+

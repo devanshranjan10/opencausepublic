@@ -1,0 +1,24 @@
+{
+  "name": "@opencause/testkit",
+  "version": "0.1.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "cd ../.. && $(pnpm bin -w)/tsc --project packages/testkit/tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@firebase/rules-unit-testing": "^3.0.0",
+    "firebase-admin": "^12.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.0"
+  }
+}
+
+
+
+
+
+

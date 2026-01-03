@@ -1,0 +1,7 @@
+node_modules/sharp
+node_modules/onnxruntime-node
+node_modules/tesseract.js
+**/sharp
+**/onnxruntime-node
+**/tesseract.js
+

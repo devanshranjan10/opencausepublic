@@ -1,0 +1,15 @@
+{
+  "name": "@opencause/contracts",
+  "version": "0.1.0",
+  "scripts": {
+    "compile": "forge build",
+    "test": "forge test",
+    "test:coverage": "forge coverage",
+    "clean": "forge clean"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "^5.0.2"
+  }
+}
+
+

@@ -1,0 +1,46 @@
+{
+  "name": "opencause",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "build:prod": "NODE_ENV=production turbo run build",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "db:push": "pnpm --filter api db:push",
+    "db:seed": "pnpm --filter api db:seed",
+    "db:studio": "pnpm --filter api db:studio",
+    "db:migrate": "pnpm --filter api db:migrate",
+    "db:migrate:deploy": "pnpm --filter api db:migrate:deploy",
+    "db:generate": "pnpm --filter api db:generate",
+    "contracts:test": "pnpm --filter contracts test",
+    "contracts:compile": "pnpm --filter contracts compile",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
+    "test:ci": "cross-env NODE_ENV=test jest --runInBand --coverage",
+    "test:api": "pnpm --filter api test",
+    "test:contracts": "cd apps/contracts && forge test -vvv",
+    "start:api": "pnpm --filter api start:prod",
+    "start:web": "pnpm --filter web start"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "@types/jest": "^29.5.11",
+    "supertest": "^6.3.3",
+    "@types/supertest": "^6.0.2",
+    "cross-env": "^7.0.3",
+    "firebase-tools": "^13.0.0",
+    "@firebase/rules-unit-testing": "^3.0.0"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
+

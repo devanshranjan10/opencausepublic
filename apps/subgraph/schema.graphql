@@ -1,0 +1,42 @@
+type Campaign @entity {
+  id: ID!
+  vault: Bytes!
+  organizer: Bytes!
+  title: String!
+  createdAt: BigInt!
+  totalRaised: BigInt!
+  status: String!
+}
+
+type Donation @entity {
+  id: ID!
+  campaign: Campaign!
+  donor: Bytes!
+  token: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+type Withdrawal @entity {
+  id: ID!
+  campaign: Campaign!
+  milestoneId: BigInt!
+  token: Bytes!
+  amount: BigInt!
+  payee: Bytes!
+  evidenceHash: Bytes!
+  txHash: Bytes!
+  timestamp: BigInt!
+}
+
+type Evidence @entity {
+  id: ID!
+  kind: String!
+  campaign: Campaign
+  evidenceHash: Bytes!
+  submitter: Bytes!
+  amount: BigInt
+  timestamp: BigInt!
+}
+
+
