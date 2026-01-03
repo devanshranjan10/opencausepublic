@@ -4,9 +4,8 @@
 
 ### Transparent Crowdfunding Platform with Blockchain Escrow
 
-**Every rupee tracked. Every milestone proven. Every cause trusted.**
+**Every rupee tracked. Every milestone proven. Every cause transparent.**
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-15.0-black)](https://nextjs.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-10.3-red)](https://nestjs.com/)
@@ -510,7 +509,7 @@ For support, email admin@opencause.world or open an issue in this repository.
 
 <div align="center">
 
-**Made with ❤️ by the Team ZenTech**
+**Made with ❤️ by the Team ZenTechs**
 
 </div>
 
